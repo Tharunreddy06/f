@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Father's Day</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Happy Father's Day, Dad! 👨‍👦</h1>
+
+    <!-- Carousel Start -->
+    <div class="carousel">
+      <div class="slides">
+        <img src="assets/dad1.jpg" alt="Dad 1" />
+        <img src="assets/dad2.jpg" alt="Dad 2" />
+        <img src="assets/dad3.jpg" alt="Dad 3" />
+        <img src="assets/dad4.jpg" alt="Dad 4" />
+        <img src="assets/dad5.jpg" alt="Dad 5" />
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <!-- Carousel End -->
+
+    <p class="message">
+  Dear Dad,<br><br>
+  On this special day, I just want to say <strong>thank you</strong> — not just for being my father, but for being my role model, my hero, and my greatest supporter.<br><br>
+  Your strength has always lifted me, your words have always guided me, and your love has been my greatest blessing.<br><br>
+  I’m proud to be your child, and I hope to make you proud every single day.<br><br>
+  <strong>Happy Father's Day!</strong><br>
+  With all my love,<br>
+  <em>Tharun</em>
+</p>
+
+<br><br>
+
+<p class="message" style="font-family: 'Noto Sans Telugu', sans-serif;">
+  ప్రియమైన నాన్నగారూ,<br><br>
+  ఈ ప్రత్యేక రోజున, నేను మీకు ధన్యవాదాలు చెప్పాలనుకుంటున్నాను - నా తండ్రిగా ఉన్నందుకు మాత్రమే కాదు, నా రోల్ మోడల్‌గా, నా హీరోగా, నా గొప్ప మద్దతుదారుడిగా ఉన్నందుకు.<br><br>
+  మీ బలం ఎల్లప్పుడూ నన్ను పైకి లేపింది, మీ మాటలు ఎల్లప్పుడూ నన్ను నడిపించాయి మరియు మీ ప్రేమ నాకు గొప్ప ఆశీర్వాదం.<br><br>
+  మీ బిడ్డగా ఉన్నందుకు నేను గర్వపడుతున్నాను మరియు ప్రతిరోజూ మిమ్మల్ని గర్వపడేలా చేయాలని ఆశిస్తున్నాను.<br><br>
+  <strong>పితృ దినోత్సవ శుభాకాంక్షలు!</strong><br>
+  నా ప్రేమతో,<br>
+  <em>తరుణ్</em>
+</p>
+
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" src="assets/bgm.mp3" loop></audio>
+
+  <!-- JavaScript -->
+  <script>
+    const audio = document.getElementById("bg-music");
+
+    function tryPlay() {
+      audio.volume = 1.0;
+      audio.play().catch(err => {
+        console.log("Autoplay blocked. Click anywhere to start music.");
+      });
+    }
+
+    window.addEventListener("load", tryPlay);
+    window.addEventListener("click", tryPlay, { once: true });
+
+    // Carousel logic
+    let slideIndex = 0;
+    const slides = document.querySelector('.slides');
+    const totalSlides = slides.children.length;
+
+    function showSlide(index) {
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % totalSlides;
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+      showSlide(slideIndex);
+    }
+
+    document.querySelector('.next').addEventListener('click', nextSlide);
+    document.querySelector('.prev').addEventListener('click', prevSlide);
+
+    setInterval(nextSlide, 4000);
+  </script>
+</body>
+</html>
